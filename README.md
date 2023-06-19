@@ -1,17 +1,15 @@
 # Visiting-Scholar-Research
-Forecasting Methane flux measurements in Bog Lake Fen, MN (U.S. Department of Energy site)
+Forecasting Methane flux (FCH4) measurements in Bog Lake Fen, MN (U.S. Department of Energy site): OLS Regression vs Machine Learning
 
-**Forecasting Methane Flux (FCH4) Measurements: OLS Regression vs Machine Learning** 
-
-*Project Summary:* 
+# Project Summary
 
 I  aim  to  evaluate  and  process  eddy  covariance  and  flux  variance  data  (specifically atmospheric CH4 and CO2) to better understand the ecosystem processes of a peatland site in Marcell  Experimental  Forest,  Bog  Lake  Fen.  Peatlands  serve  an  integral  role  in  the  global biogeochemical cycles – they’re natural sources of two leading greenhouse gases, CO2 and CH4. These sites are susceptible to warming temperatures: peat in this northern region thaws and causes natural vegetation to drown and lakes to brown with solid organic matter that dissolve into the water. This results in vast quantities of CO2 and CH4 emissions being released into aquatic bodies and the atmosphere. The overall objective of this study is to analyze sources and responses within aquatic ecosystems and feedbacks with the atmosphere through CO2 and CH4 flux measurements. 
 
-We created various forecasting models of CH4 flux measurements with simultaneous observations of CO2 flux values, precipitation values, and temperature values (atmospheric and 10CM soil readings). Multiple time series of our data were produced to showcase trends over the years (2009 – 2021) and the influence of seasonality for increasing emissions. Ultimately, we were testing  and  comparing  various  models  (traditional  statistical  methods  like  multiple  linear regression versus machine learning methods like Microsoft Light Gradient Boosting Machine, SARIMAX, Facebook Prophet, and Xgboost) and their accuracy assessments for future flux measurements. Univariate models (just looking at FCH4 or just looking at FCO2) and multivariate models (the incorporation of correlated predictor variables) were compared. We were curious what variables garner the largest influence over CH4 emissions, and if those variables could be integrated into a model that accurately forecasts atmospheric CH4 emissions up to 95% confidence.  
+I created various forecasting models of CH4 flux measurements with simultaneous observations of CO2 flux values, precipitation values, and temperature values (atmospheric and 10CM soil readings). Multiple time series of our data were produced to showcase trends over the years (2009 – 2021) and the influence of seasonality for increasing emissions. Ultimately, we were testing  and  comparing  various  models  (traditional  statistical  methods  like  multiple  linear regression versus machine learning methods like Microsoft Light Gradient Boosting Machine, SARIMAX, Facebook Prophet, and Xgboost) and their accuracy assessments for future flux measurements. Univariate models (just looking at FCH4 or just looking at FCO2) and multivariate models (the incorporation of correlated predictor variables) were compared. We were curious what variables garner the largest influence over CH4 emissions, and if those variables could be integrated into a model that accurately forecasts atmospheric CH4 emissions up to 95% confidence.  
 
 CH4 flux values were assigned the role of our indicator variable. Our predictor variables for the model (in order of influence) were as follows: Soil Temperature, ATM Temperature, CO2 flux values, and Precipitation. We used data captured over the years of 2009 – 2019 as testing values for our model and created different periods for forecasting (one-year into the future, two- year predictions, and so forth). We then compared the accuracy of these forecasts with the actual values of flux measurements. 
 
-*Research Design:* 
+## Research Design
 
 Three micrometeorological-towers have been deployed above Bog Lake Fen during the ice-free period, along with several other *in situ* sensors at the lake’s surface (1-2 meters in depth). Thermistor chains extending the surface to the lake’s bottom are regularly deployed throughout the year. If conditions are ideal, a water quality sonde is deployed. Variance fluxes will be estimated across the lake-atmosphere interface using an aerodynamic flux-gradient approach.  
 
@@ -19,7 +17,7 @@ A 3-dimensionsal sonic anemometer-thermometer will be used to obtain the eddy di
 
 The raw mixing ratios will be calibrated using the interpolated calibration data. The final mixing ratios consider flux calculations and will be block-averaged at 30-minute intervals. All sonic anemometer data will be recorded at 10 Hz. AmeriFlux protocols will be followed for routine calculations, corrections, and data quality estimations. 
 
-A buoy system has been implemented to automate in-lake measurements and quantify oscillations in biogeochemical pools, such as carbon and oxygen. Carbon fluxes will be measured through three factors: pH, alkalinity, and dissolved inorganic carbon (DIC). Dissolved oxygen (DO) is a product of photosynthesis and  can  be  used  to  assess  carbon  pools.  A  chlorophyll  sensor  will  be  used  to  analyze  changes  in phytoplankton biomass – and a fluoroprobe will be used to further differentiate algae into varying classes based on pigment signatures. These algal sensors allow for an analysis of phytoplankton’s role on mediating greenhouse gas fluxes. High frequency CO2 sensors will also be used to assess short-term oscillations in the CO2 pool of Bog Lake Fen. 
+A buoy system has been implemented to automate in-lake measurements and quantify oscillations in biogeochemical pools, such as carbon and oxygen. Carbon fluxes will be measured through three factors: pH, alkalinity, and dissolved inorganic carbon (DIC). Dissolved oxygen (DO) is a product of photosynthesis and  can  be  used  to  assess  carbon  pools.  A  chlorophyll  sensor  will  be  used  to  analyze  changes  in phytoplankton biomass – and a fluoroprobe will be used to further differentiate algae into varying classes based on pigment signatures. These algal sensors allow for an analysis of phytoplankton’s role on mediating greenhouse gas fluxes. High frequency CO2 sensors will also be used to assess short-term oscillations in the CO2 pool of Bog Lake Fen.
 
 ![](Aspose.Words.109596b1-747e-4e7d-9cd6-6249b9912144.001.jpeg)
 
@@ -31,14 +29,14 @@ A buoy system has been implemented to automate in-lake measurements and quantify
 
 *Eddy Covariance Tower (Research Site)* 
 
-*Project Objective(s):* 
+## Project Objectives
 
 - Plot Monthly (2009 – 2021) Variable Averages (Emission Trends & Seasonality) 
 - Multiple Linear Regression & Correlation Matrices 
 - Forecast Modeling Methane Flux values with Seasonal Variability 
-- Time Series Analysis (Univariate & Multivariate) 
-
-*Results:* 
+- Time Series Analysis (Univariate & Multivariate)
+   
+## Results
 
 1. *Monthly Variation Plots (Seasonality Incorporations of Averaged Monthly Emissions)* 
 

@@ -19,15 +19,14 @@ The raw mixing ratios will be calibrated using the interpolated calibration data
 
 A buoy system has been implemented to automate in-lake measurements and quantify oscillations in biogeochemical pools, such as carbon and oxygen. Carbon fluxes will be measured through three factors: pH, alkalinity, and dissolved inorganic carbon (DIC). Dissolved oxygen (DO) is a product of photosynthesis and  can  be  used  to  assess  carbon  pools.  A  chlorophyll  sensor  will  be  used  to  analyze  changes  in phytoplankton biomass – and a fluoroprobe will be used to further differentiate algae into varying classes based on pigment signatures. These algal sensors allow for an analysis of phytoplankton’s role on mediating greenhouse gas fluxes. High frequency CO2 sensors will also be used to assess short-term oscillations in the CO2 pool of Bog Lake Fen.
 
+*Study Area: Bog Lake Fen, MN* 
 ![Study Area: Bog Lake Fen, MN](assets/Study_Area.png)
 
-*Study Area: Bog Lake Fen, MN* 
 
+*Eddy Covariance Tower (Research Site)* 
 ![Eddy Covariance Tower_1](assets/EC_Tower_1.png)
 
 ![Eddy Covariance Tower_2](assets/EC_Tower_2.png)
-
-*Eddy Covariance Tower (Research Site)* 
 
 ## Project Objectives
 
@@ -40,39 +39,31 @@ A buoy system has been implemented to automate in-lake measurements and quantify
 
 1. *Monthly Variation Plots (Seasonality Incorporations of Averaged Monthly Emissions)* 
 
+**FCH4** 
 ![](assets/FCH4.png)
 
-**FCH4** 
-
+**FCO2** 
 ![](assets/FCO2.png)
 
-**FCO2** 
-
+**Atmospheric Temperature (°F)** 
 ![](assets/ATM_Temp.png)
 
-**Atmospheric Temperature (°F)** 
-
+**Soil Temperature (°F)** 
 ![](assets/Soil_Temp.png)
 
-**Soil Temperature (°F)** 
-
-![](assets/Precip.png)
-
 **Cumulative Precipitation Values (mm)** 
+![](assets/Precip.png)
 
 2. *Linear Regression Process* 
 
+**Correlation Matrix** 
 ![](assets/Correlation_Matrix.png)
 
-**Correlation Matrix** 
-
+**Outlier Assessment** 
 ![](assets/Outlier_Assessment.png)
 
-**Outlier Assessment** 
-
-![](assets/All_Variable_Scatterplot.png)
-
 **Scatterplot of all Variables** 
+![](assets/All_Variable_Scatterplot.png)
 
 The Correlation Matrix indicates all predictor variables are strongly correlated with our indicator variable  (FCH4).  Soil  Temperature  is  the  highest  correlated  variable  (0.87),  followed  by Atmospheric Temperature (0.76), FCO2 (-0.74), and Precipitation (0.43). Soil Temperature and Atmospheric  Temperature  are  highly  dependent  on  each  other  –  the  Soil  Temperature measurements at the site were captured at 10CM. FCO2 was the only negative association variable in the model, but its influence is significant (Carbon associated with both CH4 & CO2). 
 
@@ -80,53 +71,43 @@ An Outlier Assessment underscores the influence of seasonality with FCH4 measure
 
 The mass scatterplot visualizes the relationships between our variables – another way of expressing the results of our correlation matrix (a visualization to assess linearity, relationships, and the spread of the data). 
 
+**Simple Linear Regression: FCH4 vs Soil Temperature** 
 ![](assets/Simple_Lin_Reg_Soil_Temp.png)
 
-**Simple Linear Regression: FCH4 vs Soil Temperature** 
-
-![](assets/Simple_Lin_Reg_Atm_Temp.png)
-
 **Simple Linear Regression: FCH4 vs Atmospheric Temperature** 
+![](assets/Simple_Lin_Reg_Atm_Temp.png)
 
 Building a simple linear regression model is a first-step in assessing the fit of our ML Regression model – I chose to look at Soil Temperature and Atmospheric Temperature, first, because they were the most correlated variables with FCH4. Simply using Soil Temperature returned an R2 value of 0.76 and BIC of 608. 
 
+**Simple Linear Regression: OLS Results (FCH4 vs Soil Temperature)** 
 ![](assets/OLS_Reg_Soil_Temp.png)
 
-**Simple Linear Regression: OLS Results (FCH4 vs Soil Temperature)** 
-
-![](assets/Fitting_ML_Model.png)
-
 **Fit of ML Regression Model** 
-
+![](assets/Fitting_ML_Model.png)
 ***AVG FCH4 = (2.1 \* Soil Temp) – (0.2 \* ATM Temp) + (1.4 \* FCO2) – (13.3 \* Precip)*** 
 
-![](assets/ML_Reg_Model.png)
-
 **ML Regression Model (OLS Results)** 
+![](assets/ML_Reg_Model.png) 
 
 Our Multiple Linear Regression Model (built using all predictor variables – Soil Temperature, Atmospheric Temperature, FCO2 and Precipitation) returned an R2 of 0.78 and BIC of 876.4. The predictive power of this model is marginally higher than our simple linear regression model (just using Soil Temperature as a predictor variable for FCH4), with an increased BIC of 268.4 (our simple linear regression model returned a BIC value of 608, compared to this model’s BIC of 876.4). 
 
-![](assets/F-Test_ANOVA.png)
-
 **F-Test (ANOVA)** 
+![](assets/F-Test_ANOVA.png)
 
 An F-Test (ANOVA) was performed to analyze the variance of our ML Regression Model. Our model returned an F-statistics of 95.7, implying statistical significance of our predictor variables. 
 
+**Linearity Assumption: Actual FCH4 Values vs Predicted FCH4 Values** 
 ![](assets/Linearity_Assum.png)
 
-**Linearity Assumption: Actual FCH4 Values vs Predicted FCH4 Values** 
-
-![](assets/Standardized_Residuals.png)
-
 **Standardized Residuals** 
+![](assets/Standardized_Residuals.png)
 
 Standardized variables (either the predicted values or the residuals) have a mean of zero and standard deviation of one. If the residuals are normally distributed, 95% of them will fall between -2 and 2. If they fall above or below 2 (in this case, four observations) they are considered unusual. 
 
 Almost all observed residuals of FCH4 measurements fall between -2 and 2 and can therefore be considered normally distributed. 
 
-![](assets/Autocorrelation.png)
-
 **Autocorrelation Assessment: Durbin-Watson Analysis** 
+![](assets/Autocorrelation.png)
 
 Our  Durbin-Watson  analysis  showed  signs  of  positive  autocorrelation  -  this  means  that  the increased observed in a time interval will lead to a proportionate increase in the lagged time interval. 
 
@@ -145,13 +126,11 @@ Our Durbin-Watson result returned a value of 1.2.
 - Our first attempt at forecasting FCH4 emissions was set to one week, meaning we plotted the real values versus predicted values for the last week of the dataset. This was a test to see if the SML model worked. 
 - We then created a 1-year lag variable by shifting the target value (FCH4) back a year 
 
+**Decomposed Time-Series: Observed, Trend, Seasonality, and Noise (Residuals)** 
 ![](assets/Decomposed_Timeseries.png)
 
-**Decomposed Time-Series: Observed, Trend, Seasonality, and Noise (Residuals)** 
-
-![](assets/Real_vs_Predicted.png)
-
 **Real vs Predicted (Mean Average Error of 4.23) SARIMAX: Univariate (FCH4) Predictive Modeling** 
+![](assets/Real_vs_Predicted.png)
 
 - Seasonal Auto-Regressive Integrated Moving Average w/ eXogenous factors (SARIMAX) 
 - Includes seasonal effects & eXogenous factors w/ the autoregressive and moving average computed in the model 
@@ -160,13 +139,11 @@ Our Durbin-Watson result returned a value of 1.2.
 - Compute parameter combinations for Seasonal Arima through iterative process. Use these parameters to incorporate seasonality. 
 - Plot the predictive model for FCH4 – observed vs predicted – based on a 1-year forecast. 
 
+**Four-Series Assessment: Residuals, Q-Q Plotting, Histogram, Correlogram** 
 ![](assets/Four_Series_Assessment.png)
 
-**Four-Series Assessment: Residuals, Q-Q Plotting, Histogram, Correlogram** 
-
-![](assets/SARIMAX.png)
-
 **SARIMAX Predictive Modeling for 2020 FCH4 Emissions Facebook Prophet: Univariate (FCH4) Two-Year Forecasting (2022 Emissions)** 
+![](assets/SARIMAX.png)
 
 - Forecasting time series data based on an additive model where non-linear trends are fit with yearly, weekly, and daily seasonality, plus holiday effects. It works best with time series that have strong seasonal effects and several seasons of historical data. Prophet is robust to missing data and shifts in the trend, and typically handles outliers well. 
 - Univariate analysis (FCH4) from 2009 – 2019 emissions to predict 2022 emissions. 
@@ -175,21 +152,17 @@ Our Durbin-Watson result returned a value of 1.2.
 - Assess overall trend in FCH4 emissions (completely linear) and monthly level. Yearly seasonality shows FCH4 is highest in Summer (July) and tapers off in January. 
 - Automatically isolate largest quantity of change points where the rate has highest amount of change. 
 
+**Visualizing Monthly Averages of FCH4 (y)** 
 ![](assets/Visualizing_Monthly_Averages.png)
 
-**Visualizing Monthly Averages of FCH4 (y)** 
-
+**Forecasting Model (2022 Predictions Based on 95% C.I. and Outlier Detection)** 
 ![](assets/Forecasting_Model.png)
 
-**Forecasting Model (2022 Predictions Based on 95% C.I. and Outlier Detection)** 
-
+**Trend: Linear Increase of FCH4 Estimates (with Monthly Peaks and Tapers)** 
 ![](assets/Trend.png)
 
-**Trend: Linear Increase of FCH4 Estimates (with Monthly Peaks and Tapers)** 
-
-![](assets/FB_Prophet.png)
-
 **Facebook Prophet Predictive Model: Trends and Year of Highest Variability (2017)** 
+![](assets/FB_Prophet.png)
 
 **Facebook Prophet: Multivariate Time-Series Analysis** 
 
@@ -203,13 +176,11 @@ Our Durbin-Watson result returned a value of 1.2.
 - We then tuned the model to make better estimations by forcing the model to consider yearly seasonality. 
 - We created a multivariate model that considered seasonality and added our predictor variables as regressors. 
 
+**Standardized Averages of All Variables (For a ‘Same-Scale’ Analysis)** 
 ![](assets/Standardized_Avg_All_Variables.png)
 
-**Standardized Averages of All Variables (For a ‘Same-Scale’ Analysis)** 
-
-![](assets/FB_Prophet_Multivariate.png)
-
 **Facebook Prophet Multivariate Predictive Model (2020 Emission Estimates)** 
+![](assets/FB_Prophet_Multivariate.png)
 
 **The Final Dive: Comparing Machine Learning Models for FCH4 & FCO2 Estimates** 
 
@@ -225,59 +196,48 @@ Our Durbin-Watson result returned a value of 1.2.
 - Update forecast by comparing MAPE results for layer stacked results. 
 - Create a single forecast using the best machine learning method for FCH4 and FCO2 (XGBOOST) 
 
+**FCH4 & FCO2 Measurements (Time-Series) into 2022** 
 ![](assets/FCH4_FCO2_Timeseries.png)
 
-**FCH4 & FCO2 Measurements (Time-Series) into 2022** 
-
+**Autocorrelation Assessment**
 ![](assets/Autocorrelation_Assessment.png)
 
-**Autocorrelation Assessment** 
-
+**Dickey-Fuller Analysis (Stationarity in FCO2… but not FCH4)** 
 ![](assets/Dickey-Fuller_Analysis.png)
 
-**Dickey-Fuller Analysis (Stationarity in FCO2… but not FCH4)** 
-
+**FCH4 Forecasting (Comparing Deep Learning Models)** 
 ![](assets/FCH4_Forecast.png)
 
-**FCH4 Forecasting (Comparing Deep Learning Models)** 
-
+**FCO2 Forecasting (Comparing Deep Learning Models)** 
 ![](assets/FCO2_Forecast.png)
 
-**FCO2 Forecasting (Comparing Deep Learning Models)** 
-
+**Comparison of Deep Learning Models (Choose Models with Lowest MAPE)** 
 ![](assets/Comparing_DL_Models.png)
 
-**Comparison of Deep Learning Models (Choose Models with Lowest MAPE)** 
-
+**FCH4 Multi-Variate Forecasting (Comparing Deep Learning Models)** 
 ![](assets/FCH4_Multivariate.png)
 
-**FCH4 Multi-Variate Forecasting (Comparing Deep Learning Models)** 
-
+**FCO2 Multi-Variate Forecasting (Comparing Deep Learning Models)** 
 ![](assets/FCO2_Multivariate.png)
 
-**FCO2 Multi-Variate Forecasting (Comparing Deep Learning Models)** 
-
+**Model Results: Improvements & MAPE Scores** 
 ![](assets/Model_Results.png)
 
-**Model Results: Improvements & MAPE Scores** 
-
+**FCH4 Multi-Variate (Layer Stacking)** 
 ![](assets/FCH4_Layer_Stacking.png)
 
-**FCH4 Multi-Variate (Layer Stacking)** 
+**FCO2 Multi-Variate (Layer Stacking)**
 
 ![](assets/FCO2_Layer_Stacking.png)
 
-**FCO2 Multi-Variate (Layer Stacking)** 
-
+**Model Cross-Comparison (MAPE Scores vs R2 Results) for Multi-Variate Models** 
 ![](assets/Model_Cross-Comparison_1.png)
 
 ![](assets/Model_Cross-Comparison_2.png)
 
-**Model Cross-Comparison (MAPE Scores vs R2 Results) for Multi-Variate Models** 
-
+**XGBOOST: Best Deep Learning Model for Forecasting FCH4 (Based on ↓ MAPE)** 
 ![](assets/XGBOOST_FCH4.png)
 
-**XGBOOST: Best Deep Learning Model for Forecasting FCH4 (Based on ↓ MAPE)** 
+**XGBOOST: Best Deep Learning Model for Forecasting FCO2 (Based on ↓ MAPE)** 
 
 ![](assets/XGBOOST_FCO2.png)
-**XGBOOST: Best Deep Learning Model for Forecasting FCO2 (Based on ↓ MAPE)** 

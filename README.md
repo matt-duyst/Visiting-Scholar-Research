@@ -22,11 +22,12 @@ A buoy system has been implemented to automate in-lake measurements and quantify
 *Study Area: Bog Lake Fen, MN* 
 ![Study Area: Bog Lake Fen, MN](assets/Study_Area.png)
 
-
-*Eddy Covariance Tower (Research Site)* 
 ![Eddy Covariance Tower_1](assets/EC_Tower_1.png)
 
 ![Eddy Covariance Tower_2](assets/EC_Tower_2.png)
+
+
+*Eddy Covariance Tower (Research Site)* 
 
 ## Project Objectives
 
@@ -59,7 +60,8 @@ A buoy system has been implemented to automate in-lake measurements and quantify
 **Correlation Matrix** 
 ![](assets/Correlation_Matrix.png)
 
-**Outlier Assessment** 
+**Outlier Assessment**
+
 ![](assets/Outlier_Assessment.png)
 
 **Scatterplot of all Variables** 
@@ -202,7 +204,8 @@ Our Durbin-Watson result returned a value of 1.2.
 **Autocorrelation Assessment**
 ![](assets/Autocorrelation_Assessment.png)
 
-**Dickey-Fuller Analysis (Stationarity in FCO2… but not FCH4)** 
+**Dickey-Fuller Analysis (Stationarity in FCO2… but not FCH4)**
+
 ![](assets/Dickey-Fuller_Analysis.png)
 
 **FCH4 Forecasting (Comparing Deep Learning Models)** 

@@ -19,7 +19,7 @@ The raw mixing ratios will be calibrated using the interpolated calibration data
 
 A buoy system has been implemented to automate in-lake measurements and quantify oscillations in biogeochemical pools, such as carbon and oxygen. Carbon fluxes will be measured through three factors: pH, alkalinity, and dissolved inorganic carbon (DIC). Dissolved oxygen (DO) is a product of photosynthesis and  can  be  used  to  assess  carbon  pools.  A  chlorophyll  sensor  will  be  used  to  analyze  changes  in phytoplankton biomass – and a fluoroprobe will be used to further differentiate algae into varying classes based on pigment signatures. These algal sensors allow for an analysis of phytoplankton’s role on mediating greenhouse gas fluxes. High frequency CO2 sensors will also be used to assess short-term oscillations in the CO2 pool of Bog Lake Fen.
 
-![](Aspose.Words.109596b1-747e-4e7d-9cd6-6249b9912144.001.jpeg)
+![Study Area: Bog Lake Fen, MN](assets/Aspose.Words.109596b1-747e-4e7d-9cd6-6249b9912144.001.jpeg)
 
 *Study Area: Bog Lake Fen, MN* 
 

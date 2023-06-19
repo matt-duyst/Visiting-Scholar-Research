@@ -19,13 +19,13 @@ The raw mixing ratios will be calibrated using the interpolated calibration data
 
 A buoy system has been implemented to automate in-lake measurements and quantify oscillations in biogeochemical pools, such as carbon and oxygen. Carbon fluxes will be measured through three factors: pH, alkalinity, and dissolved inorganic carbon (DIC). Dissolved oxygen (DO) is a product of photosynthesis and  can  be  used  to  assess  carbon  pools.  A  chlorophyll  sensor  will  be  used  to  analyze  changes  in phytoplankton biomass – and a fluoroprobe will be used to further differentiate algae into varying classes based on pigment signatures. These algal sensors allow for an analysis of phytoplankton’s role on mediating greenhouse gas fluxes. High frequency CO2 sensors will also be used to assess short-term oscillations in the CO2 pool of Bog Lake Fen.
 
-![Study Area: Bog Lake Fen, MN](assets/Aspose.Words.109596b1-747e-4e7d-9cd6-6249b9912144.001.jpeg)
+![Study Area: Bog Lake Fen, MN](assets/Study_Area.png)
 
 *Study Area: Bog Lake Fen, MN* 
 
-![Eddy Covariance Tower_1](assets/Aspose.Words.109596b1-747e-4e7d-9cd6-6249b9912144.002.jpeg)
+![Eddy Covariance Tower_1](assets/EC_Tower_1.png)
 
-![Eddy Covariance Tower_2](assets/Aspose.Words.109596b1-747e-4e7d-9cd6-6249b9912144.003.jpeg)
+![Eddy Covariance Tower_2](assets/EC_Tower_2.png)
 
 *Eddy Covariance Tower (Research Site)* 
 
@@ -40,37 +40,37 @@ A buoy system has been implemented to automate in-lake measurements and quantify
 
 1. *Monthly Variation Plots (Seasonality Incorporations of Averaged Monthly Emissions)* 
 
-![](assets/Aspose.Words.109596b1-747e-4e7d-9cd6-6249b9912144.004.jpeg)
+![](assets/FCH4.png)
 
 **FCH4** 
 
-![](assets/Aspose.Words.109596b1-747e-4e7d-9cd6-6249b9912144.005.jpeg)
+![](assets/FCO2.png)
 
 **FCO2** 
 
-![](assets/Aspose.Words.109596b1-747e-4e7d-9cd6-6249b9912144.006.jpeg)
+![](assets/ATM_Temp.png)
 
 **Atmospheric Temperature (°F)** 
 
-![](assets/Aspose.Words.109596b1-747e-4e7d-9cd6-6249b9912144.007.jpeg)
+![](assets/Soil_Temp.png)
 
 **Soil Temperature (°F)** 
 
-![](assets/Aspose.Words.109596b1-747e-4e7d-9cd6-6249b9912144.008.jpeg)
+![](assets/Precip.png)
 
 **Cumulative Precipitation Values (mm)** 
 
 2. *Linear Regression Process* 
 
-![](assets/Aspose.Words.109596b1-747e-4e7d-9cd6-6249b9912144.009.jpeg)
+![](assets/Correlation_Matrix.png)
 
 **Correlation Matrix** 
 
-![](assets/Aspose.Words.109596b1-747e-4e7d-9cd6-6249b9912144.010.jpeg)
+![](assets/Outlier_Assessment.png)
 
 **Outlier Assessment** 
 
-![](assets/Aspose.Words.109596b1-747e-4e7d-9cd6-6249b9912144.011.jpeg)
+![](assets/All_Variable_Scatterplot.png)
 
 **Scatterplot of all Variables** 
 
@@ -80,43 +80,43 @@ An Outlier Assessment underscores the influence of seasonality with FCH4 measure
 
 The mass scatterplot visualizes the relationships between our variables – another way of expressing the results of our correlation matrix (a visualization to assess linearity, relationships, and the spread of the data). 
 
-![](assets/Aspose.Words.109596b1-747e-4e7d-9cd6-6249b9912144.012.jpeg)
+![](assets/Simple_Lin_Reg_Soil_Temp.png)
 
 **Simple Linear Regression: FCH4 vs Soil Temperature** 
 
-![](assets/Aspose.Words.109596b1-747e-4e7d-9cd6-6249b9912144.013.jpeg)
+![](assets/Simple_Lin_Reg_Atm_Temp.png)
 
 **Simple Linear Regression: FCH4 vs Atmospheric Temperature** 
 
 Building a simple linear regression model is a first-step in assessing the fit of our ML Regression model – I chose to look at Soil Temperature and Atmospheric Temperature, first, because they were the most correlated variables with FCH4. Simply using Soil Temperature returned an R2 value of 0.76 and BIC of 608. 
 
-![](assets/Aspose.Words.109596b1-747e-4e7d-9cd6-6249b9912144.014.jpeg)
+![](assets/OLS_Reg_Soil_Temp.png)
 
 **Simple Linear Regression: OLS Results (FCH4 vs Soil Temperature)** 
 
-![](assets/Aspose.Words.109596b1-747e-4e7d-9cd6-6249b9912144.015.jpeg)
+![](assets/Fitting_ML_Model.png)
 
 **Fit of ML Regression Model** 
 
 ***AVG FCH4 = (2.1 \* Soil Temp) – (0.2 \* ATM Temp) + (1.4 \* FCO2) – (13.3 \* Precip)*** 
 
-![](assets/Aspose.Words.109596b1-747e-4e7d-9cd6-6249b9912144.016.jpeg)
+![](assets/ML_Reg_Model.png)
 
 **ML Regression Model (OLS Results)** 
 
 Our Multiple Linear Regression Model (built using all predictor variables – Soil Temperature, Atmospheric Temperature, FCO2 and Precipitation) returned an R2 of 0.78 and BIC of 876.4. The predictive power of this model is marginally higher than our simple linear regression model (just using Soil Temperature as a predictor variable for FCH4), with an increased BIC of 268.4 (our simple linear regression model returned a BIC value of 608, compared to this model’s BIC of 876.4). 
 
-![](assets/Aspose.Words.109596b1-747e-4e7d-9cd6-6249b9912144.017.jpeg)
+![](assets/F-Test_ANOVA.png)
 
 **F-Test (ANOVA)** 
 
 An F-Test (ANOVA) was performed to analyze the variance of our ML Regression Model. Our model returned an F-statistics of 95.7, implying statistical significance of our predictor variables. 
 
-![](assets/Aspose.Words.109596b1-747e-4e7d-9cd6-6249b9912144.018.jpeg)
+![](assets/Linearity_Assum.png)
 
 **Linearity Assumption: Actual FCH4 Values vs Predicted FCH4 Values** 
 
-![](assets/Aspose.Words.109596b1-747e-4e7d-9cd6-6249b9912144.019.jpeg)
+![](assets/Standardized_Residuals.png)
 
 **Standardized Residuals** 
 
@@ -124,7 +124,7 @@ Standardized variables (either the predicted values or the residuals) have a mea
 
 Almost all observed residuals of FCH4 measurements fall between -2 and 2 and can therefore be considered normally distributed. 
 
-![](assets/Aspose.Words.109596b1-747e-4e7d-9cd6-6249b9912144.020.jpeg)
+![](assets/Autocorrelation.png)
 
 **Autocorrelation Assessment: Durbin-Watson Analysis** 
 
@@ -145,11 +145,11 @@ Our Durbin-Watson result returned a value of 1.2.
 - Our first attempt at forecasting FCH4 emissions was set to one week, meaning we plotted the real values versus predicted values for the last week of the dataset. This was a test to see if the SML model worked. 
 - We then created a 1-year lag variable by shifting the target value (FCH4) back a year 
 
-![](assets/Aspose.Words.109596b1-747e-4e7d-9cd6-6249b9912144.021.png)
+![](assets/Decomposed_Timeseries.png)
 
 **Decomposed Time-Series: Observed, Trend, Seasonality, and Noise (Residuals)** 
 
-![](assets/Aspose.Words.109596b1-747e-4e7d-9cd6-6249b9912144.022.png)
+![](assets/Real_vs_Predicted.png)
 
 **Real vs Predicted (Mean Average Error of 4.23) SARIMAX: Univariate (FCH4) Predictive Modeling** 
 
@@ -160,11 +160,11 @@ Our Durbin-Watson result returned a value of 1.2.
 - Compute parameter combinations for Seasonal Arima through iterative process. Use these parameters to incorporate seasonality. 
 - Plot the predictive model for FCH4 – observed vs predicted – based on a 1-year forecast. 
 
-![](assets/Aspose.Words.109596b1-747e-4e7d-9cd6-6249b9912144.023.jpeg)
+![](assets/Four_Series_Assessment.png)
 
 **Four-Series Assessment: Residuals, Q-Q Plotting, Histogram, Correlogram** 
 
-![](assets/Aspose.Words.109596b1-747e-4e7d-9cd6-6249b9912144.024.jpeg)
+![](assets/SARIMAX.png)
 
 **SARIMAX Predictive Modeling for 2020 FCH4 Emissions Facebook Prophet: Univariate (FCH4) Two-Year Forecasting (2022 Emissions)** 
 
@@ -175,19 +175,19 @@ Our Durbin-Watson result returned a value of 1.2.
 - Assess overall trend in FCH4 emissions (completely linear) and monthly level. Yearly seasonality shows FCH4 is highest in Summer (July) and tapers off in January. 
 - Automatically isolate largest quantity of change points where the rate has highest amount of change. 
 
-![](assets/Aspose.Words.109596b1-747e-4e7d-9cd6-6249b9912144.025.jpeg)
+![](assets/Visualizing_Monthly_Averages.png)
 
 **Visualizing Monthly Averages of FCH4 (y)** 
 
-![](assets/Aspose.Words.109596b1-747e-4e7d-9cd6-6249b9912144.026.jpeg)
+![](assets/Forecasting_Model.png)
 
 **Forecasting Model (2022 Predictions Based on 95% C.I. and Outlier Detection)** 
 
-![](assets/Aspose.Words.109596b1-747e-4e7d-9cd6-6249b9912144.027.jpeg)
+![](assets/Trend.png)
 
 **Trend: Linear Increase of FCH4 Estimates (with Monthly Peaks and Tapers)** 
 
-![](assets/Aspose.Words.109596b1-747e-4e7d-9cd6-6249b9912144.028.jpeg)
+![](assets/FB_Prophet.png)
 
 **Facebook Prophet Predictive Model: Trends and Year of Highest Variability (2017)** 
 
@@ -203,11 +203,11 @@ Our Durbin-Watson result returned a value of 1.2.
 - We then tuned the model to make better estimations by forcing the model to consider yearly seasonality. 
 - We created a multivariate model that considered seasonality and added our predictor variables as regressors. 
 
-![](assets/Aspose.Words.109596b1-747e-4e7d-9cd6-6249b9912144.029.jpeg)
+![](assets/Standardized_Avg_All_Variables.png)
 
 **Standardized Averages of All Variables (For a ‘Same-Scale’ Analysis)** 
 
-![](assets/Aspose.Words.109596b1-747e-4e7d-9cd6-6249b9912144.030.jpeg)
+![](assets/FB_Prophet_Multivariate.png)
 
 **Facebook Prophet Multivariate Predictive Model (2020 Emission Estimates)** 
 
@@ -225,60 +225,59 @@ Our Durbin-Watson result returned a value of 1.2.
 - Update forecast by comparing MAPE results for layer stacked results. 
 - Create a single forecast using the best machine learning method for FCH4 and FCO2 (XGBOOST) 
 
-![](assets/Aspose.Words.109596b1-747e-4e7d-9cd6-6249b9912144.031.jpeg)
+![](assets/FCH4_FCO2_Timeseries.png)
 
 **FCH4 & FCO2 Measurements (Time-Series) into 2022** 
 
-![](assets/Aspose.Words.109596b1-747e-4e7d-9cd6-6249b9912144.032.jpeg)
+![](assets/Autocorrelation_Assessment.png)
 
 **Autocorrelation Assessment** 
 
-![](assets/Aspose.Words.109596b1-747e-4e7d-9cd6-6249b9912144.033.png)
+![](assets/Dickey-Fuller_Analysis.png)
 
 **Dickey-Fuller Analysis (Stationarity in FCO2… but not FCH4)** 
 
-![](assets/Aspose.Words.109596b1-747e-4e7d-9cd6-6249b9912144.034.jpeg)
+![](assets/FCH4_Forecast.png)
 
 **FCH4 Forecasting (Comparing Deep Learning Models)** 
 
-![](assets/Aspose.Words.109596b1-747e-4e7d-9cd6-6249b9912144.035.jpeg)
+![](assets/FCO2_Forecast.png)
 
 **FCO2 Forecasting (Comparing Deep Learning Models)** 
 
-![](assets/Aspose.Words.109596b1-747e-4e7d-9cd6-6249b9912144.036.jpeg)
+![](assets/Comparing_DL_Models.png)
 
 **Comparison of Deep Learning Models (Choose Models with Lowest MAPE)** 
 
-![](assets/Aspose.Words.109596b1-747e-4e7d-9cd6-6249b9912144.037.jpeg)
+![](assets/FCH4_Multivariate.png)
 
 **FCH4 Multi-Variate Forecasting (Comparing Deep Learning Models)** 
 
-![](assets/Aspose.Words.109596b1-747e-4e7d-9cd6-6249b9912144.038.jpeg)
+![](assets/FCO2_Multivariate.png)
 
 **FCO2 Multi-Variate Forecasting (Comparing Deep Learning Models)** 
 
-![](assets/Aspose.Words.109596b1-747e-4e7d-9cd6-6249b9912144.039.jpeg)
+![](assets/Model_Results.png)
 
 **Model Results: Improvements & MAPE Scores** 
 
-![](assets/Aspose.Words.109596b1-747e-4e7d-9cd6-6249b9912144.040.jpeg)
+![](assets/FCH4_Layer_Stacking.png)
 
 **FCH4 Multi-Variate (Layer Stacking)** 
 
-![](assets/Aspose.Words.109596b1-747e-4e7d-9cd6-6249b9912144.041.jpeg)
+![](assets/FCO2_Layer_Stacking.png)
 
 **FCO2 Multi-Variate (Layer Stacking)** 
 
-![](assets/Aspose.Words.109596b1-747e-4e7d-9cd6-6249b9912144.042.jpeg)
+![](assets/Model_Cross-Comparison_1.png)
 
-![](assets/Aspose.Words.109596b1-747e-4e7d-9cd6-6249b9912144.043.png)
+![](assets/Model_Cross-Comparison_2.png)
 
 **Model Cross-Comparison (MAPE Scores vs R2 Results) for Multi-Variate Models** 
 
-![](assets/Aspose.Words.109596b1-747e-4e7d-9cd6-6249b9912144.044.jpeg)
+![](assets/XGBOOST_FCH4.png)
 
 **XGBOOST: Best Deep Learning Model for Forecasting FCH4 (Based on ↓ MAPE)** 
 
-![](assets/Aspose.Words.109596b1-747e-4e7d-9cd6-6249b9912144.045.jpeg)
-
+![](assets/XGBOOST_FCO2.png)
 **XGBOOST: Best Deep Learning Model for Forecasting FCO2 (Based on ↓ MAPE)** 
